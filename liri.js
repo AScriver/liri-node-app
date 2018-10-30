@@ -33,14 +33,14 @@ var omdbSearch = function(search){
     request("http://www.omdbapi.com/?apikey=" + keys.omdb + "&t=" + search, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             console.log("========================================");
-            console.log(JSON.parse(body).Title);
-            console.log(JSON.parse(body).Year);
-            console.log(JSON.parse(body).imdbRating);
-            console.log(JSON.parse(body).Ratings[1].Value);
-            console.log(JSON.parse(body).Country);
-            console.log(JSON.parse(body).Language);
-            console.log(JSON.parse(body).Plot);
-            console.log(JSON.parse(body).Actors);
+            console.log("Title: " + JSON.parse(body).Title);
+            console.log("Year: " + JSON.parse(body).Year);
+            console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
+            console.log("RT Rating: " + JSON.parse(body).Ratings[1].Value);
+            console.log("Country: " + JSON.parse(body).Country);
+            console.log("Language: " + JSON.parse(body).Language);
+            console.log("Plot: " + JSON.parse(body).Plot);
+            console.log("Actors: " + JSON.parse(body).Actors);
             console.log("========================================");
         }
     });
@@ -51,9 +51,9 @@ var bitSearch = function(search){
         if (!error && response.statusCode === 200) {
             for (let i = 0; i < JSON.parse(body).length; i++) {
                 console.log("========================================");
-                console.log(JSON.parse(body)[i].venue.name);
-                console.log(JSON.parse(body)[i].venue.city);
-                console.log(moment(JSON.parse(body)[i].datetime).format("MM/DD/YYYY"));
+                console.log("Venue: " + JSON.parse(body)[i].venue.name);
+                console.log("Location: " + JSON.parse(body)[i].venue.city);
+                console.log("Date: " + moment(JSON.parse(body)[i].datetime).format("MM/DD/YYYY"));
                 console.log("========================================");
             }
         }
